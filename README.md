@@ -1,2 +1,8 @@
 # RWTaskKit
-A Lightweight framework to dispatch tasks neatly in swift
+
+## Background
+As we know, the instance of UIApplication in an iOS App calls delegate methods to notify developers implemnting customizations. 
+
+
+
+## Perform task neatly!
