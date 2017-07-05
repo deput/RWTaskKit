@@ -17,8 +17,8 @@ typedef NS_ENUM(NSUInteger, RWTaskPriority) {
 };
 
 typedef NS_ENUM(NSUInteger, RWTaskEvent) {
-    RWTaskEventWillFinishLaunching = 0x1,
-    RWTaskEventDidFinishLaunching = 0x1 << 1,
+    RWTaskEventWillFinishLaunching = 0x1,       //tasks will be performed only once
+    RWTaskEventDidFinishLaunching = 0x1 << 1,   //tasks will be performed only once
     RWTaskEventWillEnterForeground = 0x1 << 2,
     RWTaskEventDidEnterBackground = 0x1 << 3,
     RWTaskEventDidBecomeActive = 0x1 << 4,
