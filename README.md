@@ -5,7 +5,7 @@ As we know, the instance of UIApplication in an iOS App calls delegate methods t
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // do massive stuff.....
+    // do your massive stuff.....
     
     return YES;
 }
@@ -19,7 +19,7 @@ RWTaskKit is born to solve this issue! It helps programers to perform tasks sepe
 ## Perform task neatly!
 
 ### Quick examle
-Here is an examle for a task defined in m file:
+Here is an examle for a task defined in a `.m` file:
 
 ```objc
 @task(Task1, RWTaskPriorityCritical, RWTaskEventWillFinishLaunching)
@@ -28,6 +28,8 @@ Here is an examle for a task defined in m file:
 }
 @end
 ```
+`run`method will be invoked right after `application:willFinishLaunchingWithOptions:` is called by UIApplication.
+This code piece could be in any `.m` file only with importing `RWTask.h`
 
 #### Event task
 
