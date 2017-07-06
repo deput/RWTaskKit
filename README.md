@@ -12,7 +12,7 @@ As we know, an UIApplication instance of an App calls delegate methods to notify
 
 ```
 
-For a sophisticated Application, this would be a disaster for developer to maintain. 
+For a sophisticated application, this would be a disaster for developer to maintain. 
 
 RWTaskKit is born to solve this issue! It helps programers to perform tasks seperately. Forget AppDelegate from now on!
 
@@ -49,7 +49,7 @@ just an `end`
 RWTaskKit supports three types of task:`event task` `schedule task` `notification task`
 
 #### Event task
-`Event task` 
+`Event task` is designed to handle common methods calling in UIApplicationDelegate. 
 
 #### Schedule task
 
