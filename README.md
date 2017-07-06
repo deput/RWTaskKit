@@ -10,7 +10,8 @@ As we know, an UIApplication instance of an App calls delegate methods to notify
     return YES;
 }
 
-```Quick example
+```
+
 For a sophisticated Application, this would be a disaster for developer to maintain. 
 
 RWTaskKit is born to solve this issue! It helps programers to perform tasks seperately. Forget AppDelegate from now on!
