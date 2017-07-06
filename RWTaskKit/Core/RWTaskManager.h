@@ -128,7 +128,7 @@ interface Task: RWScheduledTask @end\
 @end
 
 
-#define notification(Task, TaskPriority, NotificationKey) \
+#define notification(Task, NotificationKey) \
 interface Task: RWNotificationTask @end\
 @implementation Task\
 + (void) load{\
@@ -136,7 +136,7 @@ interface Task: RWNotificationTask @end\
 }\
 + (RWTaskPriority) priority\
 {\
-    return TaskPriority;\
+    return RWTaskPriorityDefault;\
 }\
 + (RWTaskEvent) triggerEvent\
 {\
