@@ -60,24 +60,24 @@ Parameters in the brackets are :`Task Name`, `Priority`, `Event Name`
 
 ```objc
 typedef NS_ENUM(NSUInteger, RWTaskEvent) {
-RWTaskEventWillFinishLaunching = 0x1,       //tasks will be performed only once
-RWTaskEventDidFinishLaunching = 0x1 << 1,   //tasks will be performed only once
-RWTaskEventWillEnterForeground = 0x1 << 2,
-RWTaskEventDidEnterBackground = 0x1 << 3,
-RWTaskEventDidBecomeActive = 0x1 << 4,
-RWTaskEventDidReceiveMemoryWarning = 0x1 << 5,
-RWTaskEventWillTerminate = 0x1 << 6,
-RWTaskEventWillResignActive = 0x1 << 7,
-RWTaskEventSignificantTimeChange = 0x1 << 8,
-RWTaskEventOpenURL = 0x1 << 9,
-RWTaskEventWillChangeStatusBarOrientation = 0x1 << 10,
-RWTaskEventDidChangeStatusBarOrientation = 0x1 << 11,
-RWTaskEventBackgroundRefreshStatusDidChange = 0x1 << 12,
-RWTaskEventUserDidTakeScreenshot = 0x1 << 13,
-RWTaskEventReserved1 = 0x1 << 14,
-RWTaskEventReserved2 = 0x1 << 15,
-RWTaskEventIdle = 0x1 << 16, // not implemented
-RWTaskEventNone = 0,
+  RWTaskEventWillFinishLaunching = 0x1,       //tasks will be performed only once
+  RWTaskEventDidFinishLaunching = 0x1 << 1,   //tasks will be performed only once
+  RWTaskEventWillEnterForeground = 0x1 << 2,
+  RWTaskEventDidEnterBackground = 0x1 << 3,
+  RWTaskEventDidBecomeActive = 0x1 << 4,
+  RWTaskEventDidReceiveMemoryWarning = 0x1 << 5,
+  RWTaskEventWillTerminate = 0x1 << 6,
+  RWTaskEventWillResignActive = 0x1 << 7,
+  RWTaskEventSignificantTimeChange = 0x1 << 8,
+  RWTaskEventOpenURL = 0x1 << 9,
+  RWTaskEventWillChangeStatusBarOrientation = 0x1 << 10,
+  RWTaskEventDidChangeStatusBarOrientation = 0x1 << 11,
+  RWTaskEventBackgroundRefreshStatusDidChange = 0x1 << 12,
+  RWTaskEventUserDidTakeScreenshot = 0x1 << 13,
+  RWTaskEventReserved1 = 0x1 << 14,
+  RWTaskEventReserved2 = 0x1 << 15,
+  RWTaskEventIdle = 0x1 << 16, // not implemented
+  RWTaskEventNone = 0,
 };
 ```
 Above event enumerations are mapped to coresponding delegate methods. see `UIApplication.h` in iOS SDK.
@@ -96,7 +96,7 @@ class method `run` is a must-have for any task.  Besides `event task` has a opti
 @end
 ```
 
-Here `task_name` is a macro for convinience.
+Here `task_name` is a macro for convinience. Tasks specified in  method `dependency` have nothing to do with the order inside the array. 
 
 
 
@@ -115,7 +115,7 @@ examples:
  
 @timer(ScheduleTask2, 10, 2)
 + (void) run{
-  NSLog(@"hello forever");
+  NSLog(@"hello");
 }
 @end
 ```
@@ -128,13 +128,26 @@ Schedule task has a built-in clock, time interval is 1 second. Thus the `timeint
 
 > Note: developers can customize the built-in time interval by trigger a repeatly notification implused by your own `NSTimer`.
 >
-> First, use `NO_RW_CLOCK` macro once in any `.m` file. Second, post a notification with name `RWAppClockTicktockNotificationKey` in your timer
+> First, use `NO_RW_CLOCK` macro only once in any `.m` file. Second, post a notification with name `RWAppClockTicktockNotificationKey` in your customized timer.
 
 #### Notification task
 
+Notification task is designed for task should be triggered by a notification. Example:
 
-#### Features 
+```objc
+@notification(NotiTask,@"NotificationKey")
++ (void) runWithNotification:(NSNotification*)noti{
+  NSLog(@"hello");
+}
+@end
+```
 
-#### To do
+
+
+#### Runtime injection
+
+
+
+
 
 
