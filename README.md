@@ -10,7 +10,7 @@ As we know, an UIApplication instance of an App calls delegate methods to notify
     return YES;
 }
 
-```
+```dddddddddd
 For a sophisticated Application, this would be a disaster for developer to maintain. 
 
 RWTaskKit is born to solve this issue! It helps programers to perform tasks seperately. Forget AppDelegate from now on!
@@ -34,11 +34,17 @@ You can see that each task consists of three parts: `task identifier with parame
 - `task identifier with parameters`
 1. start with `@` character just like annotation in Java
 2. followed by a keyword identifing type of task
-3. 
+3. followed by a set of parameters 
 
+- `task body`
+consists of one or two objective-c class method. 
+
+- `task end identifier`
+dddd
 RWTaskKit supports three types of task:`event task` `schedule task` `notification task`
 
 #### Event task
+`Event task` 
 
 #### Schedule task
 
