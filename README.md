@@ -27,11 +27,14 @@ Here is an examle for a task defined in a `.m` file:
 }
 @end
 ```
-`run`method will be invoked right after `application:willFinishLaunchingWithOptions:` is called by UIApplication.
-This code piece could be in any `.m` file only with importing `RWTask.h`
+method `run` will be invoked right after `application:willFinishLaunchingWithOptions:` is called by UIApplication.
+This code snippet could be in any `.m` file only with importing `RWTask.h`
 
-You can see that each task consists of three parts: `task identifier with parameters` `task body` `end identifier`.
-
+You can see that each task consists of three parts: `task identifier with parameters` `task body` `task end identifier`.
+- `task identifier with parameters`
+1. start with `@` character just like annotation in Java
+2. followed by a keyword identifing type of task
+3. 
 
 RWTaskKit supports three types of task:`event task` `schedule task` `notification task`
 
