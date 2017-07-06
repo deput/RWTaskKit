@@ -134,14 +134,6 @@ interface Task: RWNotificationTask @end\
 + (void) load{\
     registerNotificationTask(self,NotificationKey);\
 }\
-+ (RWTaskPriority) priority\
-{\
-    return RWTaskPriorityDefault;\
-}\
-+ (RWTaskEvent) triggerEvent\
-{\
-    return RWTaskEvent_Custom;\
-}\
 + (NSString*) notificationKey\
 {\
     return NotificationKey;\
