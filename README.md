@@ -122,7 +122,7 @@ examples:
 
 `ScheduleTask1` will be executed right after `1448873913`(timestamp, like `[[NSDate date] timeIntervalSince1970]`), it will be executed `5` times for every `1` second.
 
-`ScheduleTask2` will be executed every `2` second, and it will repeat `10` times .
+`ScheduleTask2` will be executed every `2` seconds, and it will repeat `10` times .
 
 Schedule task has a built-in clock, time interval is 1 second. Thus the `timeinterval` in paramters should be an integral multiple of built-in time interval. Besides the maximum `timeinterval` is 120 * built-in time interval.
 
@@ -143,10 +143,30 @@ Notification task is designed for task should be triggered by a notification. Ex
 ```
 
 
-
 #### Runtime injection
+Following interfaces can be used in runtime scenario to inject `event` tasks and `schedule` tasks.
 
+```objc
+- (void)injectEventTaskWithName:(NSString *)taskName
+                  andBlock:(RWTaskBlock)block
+                  priority:(RWTaskPriority)p
+              triggerEvent:(RWTaskEvent)e
+                dependency:(NSArray<Class> *)dependency
+                autoRemove:(BOOL)autoRemove;
+		
+- (void)scheduleTaskWithName:(NSString *)taskName
+                    andBlock:(RWTaskBlock)block
+                 desiredDate:(NSDate *)date
+                 repeatCount:(NSInteger)count
+                timeInterval:(NSUInteger)timeInterval;
 
+- (void)destroyTaskByName:(NSString *)taskName;
+
+- (void)pauseTaskByName:(NSString *)taskName;
+
+- (void)resumeTaskByName:(NSString *)taskName;
+
+```
 
 
 
