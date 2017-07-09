@@ -1,7 +1,7 @@
 # RWTaskKit
 
 ## Background
-As we know, an UIApplication instance of an App calls delegate methods to notify developers implementing customizations. In these delegate methods, we can perform our tasks:
+As we know, a UIApplication instance of an App calls delegate methods to notify developers implementing customizations. In these delegate methods, we can perform our tasks:
 
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -11,9 +11,9 @@ As we know, an UIApplication instance of an App calls delegate methods to notify
 }
 ```
 
-For a sophisticated application, this would be a disaster for developer to maintain. 
+For a sophisticated application, this would be a disaster for a developer to maintain. 
 
-RWTaskKit is born to solve this issue! It helps programers to perform tasks seperately. Forget AppDelegate from now on!
+RWTaskKit is born to solve this issue! It helps programmers to perform tasks separately. Forget AppDelegate from now on!
 
 ## Perform task neatly!
 
@@ -34,7 +34,7 @@ You can see that each task consists of three parts: `task identifier with parame
 - `task identifier with parameters`
 
 1. start with `@` character just like annotation in Java
-2. followed by a keyword identifing type of task
+2. followed by a keyword identifying type of task
 3. followed by a set of parameters 
 
 - `task body`
@@ -82,7 +82,7 @@ typedef NS_ENUM(NSUInteger, RWTaskEvent) {
 ```
 Above event enumerations are mapped to coresponding delegate methods. see `UIApplication.h` in iOS SDK.
 
-class method `run` is a must-have for any task.  Besides `event task` has a optional method `+(NSArray<Class>*)dependency` which denotes the dependency of the task. See following example:
+class method `run` is a must-have for any task.  Besides `event task` has an optional method `+(NSArray<Class>*)dependency` which denotes the dependency of the task. See the following example:
 
 ```objc
 @task(Task2, RWTaskPriorityCritical, RWTaskEventWillFinishLaunching)
@@ -96,13 +96,13 @@ class method `run` is a must-have for any task.  Besides `event task` has a opti
 @end
 ```
 
-Here `task_name` is a macro for convinience. Tasks specified in  method `dependency` have nothing to do with the order inside the array. 
+Here `task_name` is a macro for convenience. Tasks specified in method `dependency` have nothing to do with the order inside the array. 
 
 
 
 #### Schedule task
 
-Schedule task is designed for task should be executed right after a scheduled time or repeated with specified times.
+Schedule task is designed for the task should be executed right after a scheduled time or repeated with specified times.
 
 examples:
 
@@ -122,11 +122,11 @@ examples:
 
 `ScheduleTask1` will be executed right after `1448873913`(timestamp, like `[[NSDate date] timeIntervalSince1970]`), it will be executed `5` times for every `1` second.
 
-`ScheduleTask2` will be executed every `2` seconds, and it will repeat `10` times .
+`ScheduleTask2` will be executed every `2` seconds, and it will repeat `10` times.
 
-Schedule task has a built-in clock, time interval is 1 second. Thus the `timeinterval` in paramters should be an integral multiple of built-in time interval. Besides the maximum `timeinterval` is 120 * built-in time interval.
+Schedule task has a built-in clock, the time interval is 1 second. Thus the `timeinterval` in paramters should be an integral multiple of built-in time interval. Besides the maximum `timeinterval` is 120 * built-in time interval.
 
-> Note: developers can customize the built-in time interval by trigger a repeatly notification implused by your own `NSTimer`.
+> Note: developers can customize the built-in time interval by trigger a repeatedly notification implused by your own `NSTimer`.
 >
 > First, use `NO_RW_CLOCK` macro only once in any `.m` file. Second, post a notification with name `RWAppClockTicktockNotificationKey` in your customized timer.
 
@@ -144,7 +144,7 @@ Notification task is designed for task should be triggered by a notification. Ex
 
 
 #### Runtime injection
-Following interfaces can be used in runtime scenario to inject `event` tasks and `schedule` tasks.
+Following interfaces can be used in runtime scenario to inject `event` tasks and `schedule` tasks.
 
 ```objc
 - (void)injectEventTaskWithName:(NSString *)taskName
@@ -167,7 +167,3 @@ Following interfaces can be used in runtime scenario to inject `event` tasks an
 - (void)resumeTaskByName:(NSString *)taskName;
 
 ```
-
-
-
-
